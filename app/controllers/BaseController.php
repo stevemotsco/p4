@@ -4,15 +4,21 @@ class BaseController extends Controller {
 
 	/**
 	 * Setup the layout used by the controller.
-	 *
-	 * @return void
 	 */
-	protected function setupLayout()
+	public function __construct() {
+		# Any submissions via POST need to pass the CSRF filter
+		$this->beforeFilter('csrf', array('on' => 'post'));
+		# PRODUCTION  
+		# view::share('baseURL', ''); 
+   		# LOCAL  
+  		View::share('baseURL', '/p4/public');
+	}
+	/*protected function setupLayout()
 	{
 		if ( ! is_null($this->layout))
 		{
 			$this->layout = View::make($this->layout);
 		}
-	}
+	}*/
 
 }

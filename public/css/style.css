@@ -1,0 +1,65 @@
+p, h1, h2, h3, h4, h5, h6 
+{ margin: 0 0 5px 0;
+
+}
+
+h1
+{ text-decoration: underline;
+  font-weight: bold;
+}
+
+h3, h6
+{ text-align: center;
+  font-weight: bold;
+}
+
+p, h2, h4
+{ text-align: left;
+  font-weight: bold;
+}
+
+div
+{ min-width: 300px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 20px;
+  padding: 10px;
+  text-align: left;
+} 
+
+img 
+{
+  display:block;
+  margin:auto;
+  width:70%;
+}
+
+.wbdr
+{ border: 3px solid black;
+}
+
+.hdr
+{ font-weight: bold;
+}
+
+table tr td 
+{ border: 1px solid black;
+  padding: 10px;
+  text-align:center;
+}
+
+label,input 
+{
+  margin-left: 20px;
+  margin-top:5px;
+}
+
+.flash-message {
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  background-color:yellow;
+  text-align:center;
+  padding:5px;
+}

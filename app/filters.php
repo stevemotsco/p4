@@ -72,6 +72,24 @@ Route::filter('guest', function()
 
 /*
 |--------------------------------------------------------------------------
+| Is_Admin Filter
+|--------------------------------------------------------------------------
+|
+| The "Is_Admin" checks if  the current user has admin privleges.  A redirect
+| response will be issued if they are, which you may freely change.
+|
+*/
+Route::filter('isadmin', function() {
+    if ( Auth::user()->isadmin) {
+        // user is admin
+    } else {
+        // user is not admin, redirect to access denied page?
+        return Redirect::to('/denyAccess'); 
+    }
+}); 
+
+/*
+|--------------------------------------------------------------------------
 | CSRF Protection Filter
 |--------------------------------------------------------------------------
 |

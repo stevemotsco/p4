@@ -1,17 +1,24 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+/* Application Routes */
+/* NBaseController is handling before=>csrf filters */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+/* Index */
+Route::get('/', 'IndexController@getIndex');
+
+/* User (Explicit Routing) */
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+
+
+Route::get('/admin',
+    array(
+        'before' => 'isadmin', 
+        function() {
+            // render admin page
+        }
+    )
+);
