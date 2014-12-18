@@ -7,18 +7,25 @@ class UserController extends BaseController {
 		parent::__construct();
 
         $this->beforeFilter('guest',
-        	array(
-        		'only' => array('getLogin','getSignup')
-        	));
+        	array('only' => array('getLogin','getSignup')));
+
+        $this->beforeFilter('auth', 
+            array('only' => array('anyLogout', 'show', 'edit', 'update', 'destroy')));    
 
     }
 
-    /* Show new user signup form */
+    /**  
+    * GET: Show new user signup form 
+    * @return View
+    */
 	public function getSignup() {
 		return View::make('user_signup');
 	}
 
-	/* Process new user signup form */
+	/**
+	* POST: Process the new user signup
+	* @return Redirect
+	*/
 	public function postSignup() {
 		# Step 1) Define the rules
 		$rules = array(
@@ -55,12 +62,18 @@ class UserController extends BaseController {
 		return Redirect::to('/')->with('flash_message', 'Welcome to Sunshine Farms!');
 	}
 
-	/* Show login form */
+	/**
+	* Show the login form
+	* @return View
+	*/
 	public function getLogin() {
 		return View::make('user_login');
 	}
 
-	/* Process login form */
+	/**
+	* Process the login form
+	* @return View
+	*/
 	public function postLogin() {
 		$credentials = Input::only('email', 'password');
 		# Hashing of password takes place in Auth::attempt 
@@ -74,7 +87,10 @@ class UserController extends BaseController {
 		}
 	}
 
-	/* Logout */
+	/**
+	* Logout
+	* @return Redirect
+	*/
 	public function getLogout() {
 		# Log out
 		Auth::logout();

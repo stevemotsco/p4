@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateEventsTable extends Migration {
+
+	/* Run the migrations */
+	public function up()
+	{
+		Schema::create('events', function($table) {
+
+		    $table->increments('id')->unsigned();
+			$table->date('event_date');
+		    $table->integer('participants')->unsigned();
+			$table->integer('units')->unsigned();
+		    $table->boolean('is_complete')->default(0);
+			$table->date('completed_date');->nullable();
+		    $table->timestamps();
+		    # Foreign keys
+			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('service_id')->references('id')->on('services');
+		});
+	}
+
+	}
+
+	/* Reverse the migrations */
+	public function down()
+	{
+		Schema::drop('events');
+	}
+
+}

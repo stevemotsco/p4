@@ -121,8 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
-		'Laracasts\Utilities\UtilitiesServiceProvider',
+		/*'Laracasts\Utilities\UtilitiesServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider', */
 	),
 
 	/*

@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'stephenmotsco@g.harvard.edu', 'name' => 'Sunshine Farms'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => null, /*NEED TO UPDATE*/
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => null,  /*NEED TO UPDATE*/
 
 	/*
 	|--------------------------------------------------------------------------
