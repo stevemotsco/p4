@@ -9,7 +9,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'sunshinefarms_01',
 			'username'  => 'root',
-			'password'  => 'qWa-t3st!ng_01',
+			'password'  => 'yFF7aJchfZ',
 		),
 
 	),
