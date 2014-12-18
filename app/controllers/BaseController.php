@@ -9,9 +9,9 @@ class BaseController extends Controller {
 		# Any submissions via POST need to pass the CSRF filter
 		$this->beforeFilter('csrf', array('on' => 'post'));
 		# PRODUCTION  
-		# view::share('baseURL', ''); 
+		View::share('baseURL', ''); 
    		# LOCAL  
-  		View::share('baseURL', '/p4/public');
+  		#View::share('baseURL', '/p4/public');
 	}
 	/*protected function setupLayout()
 	{
