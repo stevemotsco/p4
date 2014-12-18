@@ -10,15 +10,13 @@ class CreateServicesTable extends Migration {
 	{
 		Schema::create('services', function($table) {
 
-		    $table->increments('id')->unsigned();
+		    $table->increments('id');
 		    $table->string('servname')->unique();
 		    $table->string('servdesc');
 		    $table->integer('cost_unit')->unsigned();
 		    $table->string('unit');
 		    $table->timestamps();
 		});
-	}
-
 	}
 
 	/* Reverse the migrations */

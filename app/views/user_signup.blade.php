@@ -28,4 +28,6 @@
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}
+
+    @include('nav')
 @stop

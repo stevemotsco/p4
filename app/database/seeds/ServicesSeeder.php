@@ -38,6 +38,13 @@ class ServicesSeeder extends Seeder {
 		$trail->cost_unit = 25;
 		$trail->unit = 'hour';
 		$trail->save();
+
+		$trail = new Service;
+		$trail->servname = 'Horse Boarding';
+		$trail->servdesc = 'Horses are kept in large, separated fields (stalls available).  Feeding once/twice a day depending on the horse.  Cost assumes owner providing any feeds other than hay.';
+		$trail->cost_unit = 350;
+		$trail->unit = 'month';
+		$trail->save();
 	}
 
 }

@@ -10,7 +10,7 @@ class CreateUsersTable extends Migration {
 	{
 		Schema::create('users', function($table) {
 
-		    $table->increments('id')->unsigned();
+		    $table->increments('id');
 		    $table->string('username')->unique();
 		    $table->string('email')->unique();
 		    $table->string('remember_token',100); 
@@ -19,8 +19,6 @@ class CreateUsersTable extends Migration {
 		    $table->boolean('confirmed')->default(0);
 		    $table->timestamps();
 		});
-	}
-
 	}
 
 	/* Reverse the migrations */

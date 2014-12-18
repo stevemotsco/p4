@@ -59,12 +59,12 @@ class EventController extends \BaseController {
 		        ->withErrors($validator);
 		}
 
-	    $pet = new Pet();
+	    $event = new Event();
 
 	    $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
 	    $breed = filter_var($_POST["breed"], FILTER_SANITIZE_STRING);
-	    $birthday = filter_var($_POST["birthday"], FILTER_SANITIZE_STRING);
-	    $sex = filter_var($_POST["sex"], FILTER_SANITIZE_STRING);
+	    $event_date = filter_var($_POST["event_date"], FILTER_SANITIZE_STRING);
+	    $participants = filter_var($_POST["participants"], FILTER_SANITIZE_STRING);
 	    $vet = filter_var($_POST["vet"], FILTER_SANITIZE_NUMBER_INT);
 
 	    $pet->name = $name;
@@ -106,7 +106,7 @@ class EventController extends \BaseController {
 		    	->with('flash_message', $e->getMessage());
 		}
 
-		return View::make('edit_pet', ['vet_list' => Vet::lists('name','id')])->with('pet', $pet);
+		return View::make('event_edit', ['service_list' => Service::lists('servname','id')])->with('pet', $pet);
 	}
 
 

@@ -39,7 +39,6 @@
 
 		@yield('results')
 
-		@include('nav')
 
 		</div>
 

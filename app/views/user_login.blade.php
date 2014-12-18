@@ -20,4 +20,6 @@
 
 {{ Form::close() }}
 
+	@include('nav')
+
 @stop
