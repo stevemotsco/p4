@@ -5,20 +5,28 @@
 @stop
 
 @section('content')
+	<div>
+		<h1>Log in</h1>
+	</div>
 
-<h1>Log in</h1>
+	@foreach($errors->all() as $message)
+		<div class='error-message'>
+		    {{ $message }}
+		</div>
+	@endforeach
 
-{{ Form::open(array('url' => '/login')) }}
-
-    {{ Form::label('Email') }}
-    {{ Form::text('email','me@gmail.com') }}
-
-    {{ Form::label('Password') }} (testing1)
-    {{ Form::password('password') }}
-
-    {{ Form::submit('Submit') }}
-
-{{ Form::close() }}
+	{{ Form::open(array('url' => '/login')) }}
+		<div class="wbdr">
+		    {{ Form::label('Email:') }}
+		    {{ Form::text('email') }}
+			<br/>
+		    {{ Form::label('Password:') }} 
+		    {{ Form::password('password') }}
+			<br/>
+		    {{ Form::submit('Submit') }}
+			<br/>
+		</div>
+	{{ Form::close() }}
 
 	@include('nav')
 

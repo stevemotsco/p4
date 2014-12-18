@@ -54,12 +54,20 @@ label,input
   margin-top:5px;
 }
 
+.error-message {
+  width:100%;
+  background-color:Lightpink;
+  color:red;
+  text-align:center;
+  padding:5px;
+
 .flash-message {
   width:100%;
-  position:absolute;
+  /*position:absolute;
   top:0;
-  left:0;
-  background-color:yellow;
+  left:0;*/
+  background-color:Lightblue;
+  color:Darkblue;
   text-align:center;
   padding:5px;
 }

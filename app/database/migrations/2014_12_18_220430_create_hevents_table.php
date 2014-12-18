@@ -3,12 +3,15 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration {
+class CreateHeventsTable extends Migration {
 
-	/* Run the migrations */
+	/**
+	 * Run the migrations.
+	 * @return void
+	 */
 	public function up()
 	{
-		Schema::create('events', function($table) {
+		Schema::create('hevents', function($table) {
 
 		    $table->increments('id');
 			$table->date('event_date');
@@ -25,10 +28,13 @@ class CreateEventsTable extends Migration {
 		});
 	}
 
-	/* Reverse the migrations */
+	/**
+	 * Reverse the migrations.
+	 * @return void
+	 */
 	public function down()
 	{
-		Schema::drop('events');
+		Schema::drop('hevents');
 	}
 
 }

@@ -63,6 +63,10 @@ Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
 
+Route::get('/service', 'ServiceController@getIndex');
+
+Route::get('/event', 'HeventController@getIndex');
+Route::get('/event/add', 'HeventController@getCreate');
 
 Route::get('/admin',
     array(

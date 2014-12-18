@@ -7,7 +7,7 @@ class ServicesSeeder extends Seeder {
 		# Clear the tables to a blank slate
 		DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
 		DB::statement('TRUNCATE services');
-		DB::statement('TRUNCATE events');
+		DB::statement('TRUNCATE hevents');
 		DB::statement('TRUNCATE users');
 
 		# Services
