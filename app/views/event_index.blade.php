@@ -11,40 +11,39 @@
 	</div>
 
 	@foreach($errors->all() as $message)
-		<div class='error-message'>
+		<h3 class='error-message'>
 		    {{ $message }}
-		</div>
+		</h3>
 	@endforeach
 
     @if(Session::get('flash_message'))
-		<h4>
-			<div class='flash-message'>
-     			{{ Session::get('flash_message') }}
-     		</div>	
+		<h4 class='flash-message'>
+			{{ Session::get('flash_message') }}
      	</h4>
     @endif
 
 	@if(sizeof($hevents) == 0)
-		<h4>'<?php echo $baseURL.'/logout'; ?>'
+		<h4>
 			You do not have any events scheduled.<br/><br/>
-			Would you like to <a href='<?php echo $baseURL.'/event/add'; ?>'>create one</a>?<br/><br/>
+			Would you like to <a href='<?php echo $baseURL.'/event/add'; ?>'>add an event</a>?<br/><br/>
 		</h4>
 	@else
+		<div><a href='<?php echo $baseURL.'/event/add'; ?>'>Add Event</a></div>
 		@foreach($hevents as $hevent)
 			<div class="wbdr">
 				<?php $id = $hevent->id; ?>
-	            <li>
-	            	<p>
-		            	{{"Service: ".$hevent['service']['servname'].
-		            	"<br/>Date&#58; ".$hevent['event_date'].
-		          		"<br/>Participants: ".$hevent['participants'].
-		          		"<br/>Duration: ".$hevent['units']." ".$hevent['service']['unit'].
-		          		"<br/>" 
-			          	}}
-	            	</p>
-	            </li>
-				<li>&nbsp;</li>
-				<li><a href='<?php echo $baseURL.'/event/{{ $id }}/edit'; ?>'>Edit</a></li>
+            	<p>
+	            	{{"Service: ".$hevent['service']['servname'].
+	            	"<br/>Date: ".$hevent['event_date'].
+	          		"<br/>Participants: ".$hevent['participants'].
+	          		"<br/>Duration: ".$hevent['units']." "}}
+					@if($hevent['units'] > 1) {{$hevent['service']['unit']."s<br/>"}}
+					@else {{$hevent['service']['unit']."<br/>"}}
+					@endif
+            	</p>
+	            <p>
+					<a href='<?php echo $baseURL; ?>/event/{{$id}}/edit'>Edit</a>
+            	</p>
 			</div>
 		@endforeach
 	@endif 

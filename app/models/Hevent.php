@@ -13,10 +13,10 @@ class Hevent extends Eloquent {
     public static function getRules(){
         # Define rules for events; will be used multiple times.
         $rules = array(
-            'serv_type' => 'required',
-            'event_date' => array('required', 'date', 'regex:/^(([0][0-9])|([1][0-2]))[\/](([0-2][0-9])|([3][0-1]))[\/]([2][0][0-2][0-9])$/'),
-            'participants' => 'required|regex:/^(([0][0-9])|([1][0-2]))$/',
-            'units' => 'required|regex:/^(([0][0-9])|([1][0-2]))$/'
+            'servName' => 'required',
+            'event_date' => 'required',
+            'participants' => 'required',
+            'units' => 'required'
         );
         return $rules;
     }

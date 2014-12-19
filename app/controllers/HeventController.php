@@ -22,7 +22,7 @@ class HeventController extends \BaseController {
 			return View::make('event_index')
 				->with('hevents', $hevents);
 		} else {
-			return Redirect::to('/event/add')->with('flash_message', "No events scheduled.  Would you like to add one?");
+			return Redirect::to('/event/add')->with('flash_message', '&nbsp;&nbsp;No events scheduled.  Would you like to add one?');
 		}
 	}
 
@@ -33,14 +33,6 @@ class HeventController extends \BaseController {
 	public function getCreate()
 	{
 		return View::make('event_add', ['service_list' => Service::lists('servname','id')]);
-
-		/*'servdesc''cost_unit''unit'
-		# Get all the services (used in the author drop down)
-		$services = Service::getIdNamePair();
-    	return View::make('book_add')
-    		->with('authors',$authors)
-    		->with('tags',$tags);
-    	*/	
 	}
 
 	/**
@@ -56,26 +48,21 @@ class HeventController extends \BaseController {
 		# Step 3) Redirect if validation fails
 		if($validator->fails()) {
 		    return Redirect::to('/event/add')
-		        ->with('flash_message', 'Add an event failed.  Fix error(s) listed below.')
+		        ->with('flash_message', '&nbsp;&nbsp;Add an event failed.  Fix error(s) listed above.')
 		        ->withInput()
 		        ->withErrors($validator);
 		}
-
-	    #$event_date = filter_var(Input::get('event_date'), FILTER_SANITIZE_STRING);
-	    #$participants = filter_var(Input::get('participants'), FILTER_SANITIZE_NUMBER_INT);
-	    #$units = filter_var(Input::get('units'), FILTER_SANITIZE_NUMBER_INT);
-		#$user = Auth::user();
-	    $serv_type = Service::where('id', '=', $service)->first();
-
+	    
 	    $hevent = new Hevent();
-		$hevent->event_date = Hevent::dbDate(filter_var(Input::get('event_date'), FILTER_SANITIZE_STRING));
+	    $hevent->event_date = Input::get('event_date');
 	    $hevent->participants = filter_var(Input::get('participants'), FILTER_SANITIZE_NUMBER_INT);
 		$hevent->units = filter_var(Input::get('units'), FILTER_SANITIZE_NUMBER_INT);
-		$hevent->user()->associate(Auth::user());
-		$hevent->service()->associate($serv_type);
+		$hevent->user_id = Auth::user()->id;
+		$hevent->service_id = Input::get('servName');
+		#$hevent->user()->associate(Auth::user());
 	    $hevent->save();
  
-  		return Redirect::to('/event')->with('flash_message', 'New event added.');
+  		return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;New event added.');
 	}
 
 	/**
@@ -92,7 +79,7 @@ class HeventController extends \BaseController {
 		}
 		catch(exception $e) {
 		    return Redirect::to('/event')
-		    	->with('flash_message', 'Event not found.');
+		    	->with('flash_message', '&nbsp;&nbsp;Event not found.');
 		}
 		return View::make('event_edit', ['service_list' => Service::lists('servname','id')])->with('hevent', $hevent);
 	}
@@ -110,7 +97,7 @@ class HeventController extends \BaseController {
 		# Step 3) Redirect if validation fails	
 		if($validator->fails()) {
 		    return Redirect::to('/event/'.$id.'/edit')
-		        ->with('flash_message', 'Event update failed.  Fix error(s) listed below.')
+		        ->with('flash_message', '&nbsp;&nbsp;Event update failed.  Fix error(s) listed above.')
 		        ->withInput()
 		        ->withErrors($validator);
 		}
@@ -119,7 +106,7 @@ class HeventController extends \BaseController {
 	        $hevent = Hevent::findOrFail(Input::get('id'));
 	    }
 	    catch(exception $e) {
-	        return Redirect::to('/event')->with('flash_message', 'Error while updating event.');
+	        return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Error while updating event.');
 	    }
 	    
 	    #$event_date = filter_var(Input::get('event_date'), FILTER_SANITIZE_STRING);
@@ -136,7 +123,7 @@ class HeventController extends \BaseController {
 		$event->service()->associate($serv_type);
 	    $event->save();
 
-	   	return Redirect::to('/pet')->with('flash_message','Event updated.');
+	   	return Redirect::to('/pet')->with('flash_message','&nbsp;&nbsp;Event updated.');
 	}
 
 	/**
@@ -149,17 +136,17 @@ class HeventController extends \BaseController {
 			$hevent = Hevent::findOrFail($id);
 		}
 		catch(Exception $e) {
-			return Redirect::to('/event')->with('flash_message', 'Event not found');
+			return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Event not found');
 		}
 
 		try{
 			Hevent::destroy($id);
 		}
 		catch(Exception $e) {
-			return Redirect::to('/event')->with('flash_message', 'Error while deleting event.');
+			return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Error while deleting event.');
 		}
 
-		return Redirect::to('/event')->with('flash_message','Event deleted.');
+		return Redirect::to('/event')->with('flash_message','&nbsp;&nbsp;Event deleted.');
 	}
 
 }

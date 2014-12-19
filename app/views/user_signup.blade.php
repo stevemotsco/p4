@@ -10,9 +10,9 @@
     </div>
 
     @foreach($errors->all() as $message)
-        <div class='error-message'>
+        <h3 class='error-message'>
             {{ $message }}
-        </div>
+        </h3>
     @endforeach
 
     {{ Form::open(array('url' => '/signup')) }}

@@ -10,16 +10,14 @@
 	</div>
 
 	@foreach($errors->all() as $message)
-		<div class='error-message'>
+		<h3 class='error-message'>
 		    {{ $message }}
-		</div>
+		</h3>
 	@endforeach
 
     @if(Session::get('flash_message'))
-		<h4>
-			<div class='flash-message'>
-     			{{ Session::get('flash_message') }}
-     		</div>	
+		<h4 class='flash-message'>
+			{{ Session::get('flash_message') }}
      	</h4>
     @endif
 

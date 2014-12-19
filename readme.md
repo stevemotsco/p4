@@ -25,4 +25,9 @@
 
 ##### External Code:
 * https://netdna.bootstrapcdn.com
+* http://getbootstrap.com/
+* https://code.jquery.com
+
+* http://amsul.ca/pickadate.js/index.htm
+* http://maxoffsky.com/code-blog/integrating-date-pickers/
 * http://jqueryui.com/

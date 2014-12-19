@@ -40,7 +40,7 @@ class UserController extends BaseController {
 		# Step 3
 		if($validator->fails()) {
 			return Redirect::to('/signup')
-				->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+				->with('flash_message', '&nbsp;&nbsp;Sign up failed.  Please fix the errors listed below.')
 				->withInput()
 				->withErrors($validator);
 		}
@@ -54,12 +54,12 @@ class UserController extends BaseController {
 		}
 		catch (Exception $e) {
 			return Redirect::to('/signup')
-				->with('flash_message', 'Sign up failed; please try again.')
+				->with('flash_message', '&nbsp;&nbsp;Sign up failed.  Please try again.')
 				->withInput();
 		}
 		# Log in
 		Auth::login($user);
-		return Redirect::to('/')->with('flash_message', 'Welcome to Sunshine Farms!');
+		return Redirect::to('/')->with('flash_message', '&nbsp;&nbsp;Welcome to Sunshine Farms!');
 	}
 
 	/**
@@ -78,11 +78,11 @@ class UserController extends BaseController {
 		$credentials = Input::only('email', 'password');
 		# Hashing of password takes place in Auth::attempt 
 		if (Auth::attempt($credentials, $remember = false)) {
-			return Redirect::intended('/')->with('flash_message', 'Welcome Back to Sunshine Farms!');
+			return Redirect::intended('/')->with('flash_message', '&nbsp;&nbsp;Welcome Back to Sunshine Farms!');
 		}
 		else {
 			return Redirect::to('/login')
-				->with('flash_message', 'Log in failed; please try again.')
+				->with('flash_message', '&nbsp;&nbsp;Log in failed.  Please try again.')
 				->withInput();
 		}
 	}

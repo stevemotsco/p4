@@ -4,7 +4,7 @@
 	    <meta charset="utf-8">
 	    <meta name="author" content="Steve Motsco">
 	    <title>@yield("title","Sunshine Farms")</title>
-		<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
+		<link href='//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css' rel='stylesheet'>
 	    <link rel='stylesheet' href='<?php echo $baseURL.'/css/style.css'; ?>' type='text/css'>  
 
 		@yield('head')

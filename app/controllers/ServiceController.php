@@ -13,7 +13,6 @@ class ServiceController extends \BaseController {
 	*/
 	public function getIndex()
 	{
-		
 		$services = Service::all();
 		return View::make('service_index')
 			->with('services', $services);
