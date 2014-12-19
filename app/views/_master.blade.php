@@ -16,7 +16,7 @@
 				<table>
 					<tr>
 						<td>
-							<img src='<?php echo $baseURL.'/images/sunfarm_wtxt.gif'; ?>' alt='Generator Logo'><br/>  
+							<img src='<?php echo $baseURL.'/images/sunfarm_wtxt.gif'; ?>' alt='Sunshine Farms Logo'><br/>  
 						</td>
 						<!--<td>
 							<h1>Sunshine Farms</h1>

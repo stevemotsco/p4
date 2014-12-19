@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	Sunshine Farms - Your Events
+	Serives - Sunshine Farms
 @stop
 
 @section('content')

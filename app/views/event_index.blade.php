@@ -2,7 +2,7 @@
 @extends('_master')
 
 @section('title')
-	Sunshine Farms - Your Events
+	Your Events - Sunshine Farms
 @stop
 
 @section('content')
@@ -25,9 +25,9 @@
     @endif
 
 	@if(sizeof($hevents) == 0)
-		<h4>
+		<h4>'<?php echo $baseURL.'/logout'; ?>'
 			You do not have any events scheduled.<br/><br/>
-			Would you like to <a href="/event/create">create one</a>?<br/><br/>
+			Would you like to <a href='<?php echo $baseURL.'/event/add'; ?>'>create one</a>?<br/><br/>
 		</h4>
 	@else
 		@foreach($hevents as $hevent)
@@ -44,7 +44,7 @@
 	            	</p>
 	            </li>
 				<li>&nbsp;</li>
-				<li><a href='/event/{{ $id }}/edit'>Edit</a></li>
+				<li><a href='<?php echo $baseURL.'/event/{{ $id }}/edit'; ?>'>Edit</a></li>
 			</div>
 		@endforeach
 	@endif 
