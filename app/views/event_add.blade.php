@@ -13,7 +13,9 @@
 	<script src='<?php echo $baseURL.'/js/bootstrap/js/bootstrap.min.js'; ?>'></script>
 	<script src='<?php echo $baseURL.'/js/bootstrap/js/bootstrap-datepicker.js'; ?>'></script>
 
-	<link rel='stylesheet' href='<?php echo $baseURL.'/js/bootstrap/css/bootstrap.min.css'; ?>' >  
+	<link rel='stylesheet' href='<?php echo $baseURL.'/js/bootstrap/css/bootstrap.min.css'; ?>' > 
+
+	<script src='<?php echo $baseURL.'/js/custom1/jquery-ui.css'; ?>'></script>
 @stop
 
 @section('content')
@@ -41,9 +43,8 @@
 
 	      	<br/>	      	
 	        {{ Form::label( 'event_date', 'Date: ' ) }}  
-			{{ Form::text('event_date', '', array('class' => 'form-control datepicker', 'placeholder' => 'Pick a date', )); }}
-
-	        <!--<input type='text' name='date' id='date' placeholder='Choose a date' /> -->
+			<!--{{ Form::text('event_date', '', array('class' => 'form-control datepicker', 'placeholder' => 'Pick a date', )); }}-->
+	        <input type='date' name='event_date' id='event_date' value='' /> 
 	      	<br/>
 			{{ Form::label('participants','Participants: ') }}
 			{{ Form::selectRange('participants', 01, 12); }}
@@ -61,4 +62,6 @@
 
 @section('/body')
 	<script src='<?php echo $baseURL.'/js/custom/custom.js'; ?>'></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js'></script>
+	<script src='<?php echo $baseURL.'/js/custom1/jquery-ui.js'; ?>'></script>
 @stop

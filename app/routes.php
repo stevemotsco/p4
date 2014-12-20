@@ -6,10 +6,7 @@
 Route::get('/get-environment',function() {
 echo "Environment: ".App::environment();
 });
-Route::get('/trigger-error',function() {
-# Class Foobar should not exist, so this should create an error
-$foo = new Foobar;
-});
+
 Route::get('mysql-test', function() {
 # Print environment
 echo 'Environment: '.App::environment().'<br>';
@@ -69,7 +66,8 @@ Route::get('/event', 'HeventController@getIndex');
 Route::get('/event/add', 'HeventController@getCreate');
 Route::post('/event/add', 'HeventController@postCreate');
 Route::get('/event/{id}/edit', 'HeventController@getEdit');
-Route::post('/event/{id}/edit', 'HeventController@postedit');
+Route::post('/event/{id}/edit', 'HeventController@postEdit');
+Route::post('/event/delete', 'HeventController@postDelete');
 
 Route::get('/admin',
     array(

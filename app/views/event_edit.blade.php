@@ -6,7 +6,7 @@
 @stop
 
 @section('head')
-	<script src='<?php echo $baseURL.'/js/jquery-ui.css'; ?>'></script>
+	<script src='<?php echo $baseURL.'/js/custom1/jquery-ui.css'; ?>'></script>
 @stop
 
 @section('content')
@@ -27,6 +27,8 @@
     @endif
 
 	{{ Form::open(array('url' => '/event/add')) }}
+
+		{{ Form::hidden('id',$hevent['id']); }}
         <div class="wbdr">
 			{{ Form::label('servName', 'Service: ') }}
 			{{ Form::select('servName', $service_list, $hevent['service_id']) }}
@@ -40,15 +42,24 @@
 			{{ Form::label('units','Duration: ') }}
 			{{ Form::selectRange('units', 01, 12, $hevent['units']) }}
 	      	<br/>
-			{{ Form::submit('Edit'); }}
+			{{ Form::submit('Save') }}
+
+			{{---- DELETE -----}}
+			{{ Form::open(array('url' => '/event/delete')) }}
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				{{ Form::hidden('id',$hevent['id']); }}
+				<button onClick='parentNode.submit();return false;'>Delete</button>
+			{{ Form::close() }}
+
 	      	<br/>
 		</div>
 	{{ Form::close() }}
+
 
     @include('nav')
 @stop
 
 @section('/body')
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js'></script>
-	<script src='<?php echo $baseURL.'/js/jquery-ui.js'; ?>'></script>
+	<script src='<?php echo $baseURL.'/js/custom1/jquery-ui.js'; ?>'></script>
 @stop

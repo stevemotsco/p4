@@ -41,6 +41,9 @@ class HeventController extends \BaseController {
 	 */
 	public function postCreate()
 	{
+
+	   	return Redirect::to('/event')->with('flash_message','FAILURE.');
+		
 		# Step 1) Define the rules
 		$rules = Hevent::getRules(); 
 		# Step 2) Validate
@@ -52,7 +55,6 @@ class HeventController extends \BaseController {
 		        ->withInput()
 		        ->withErrors($validator);
 		}
-	    
 	    $hevent = new Hevent();
 	    $hevent->event_date = Input::get('event_date');
 	    $hevent->participants = filter_var(Input::get('participants'), FILTER_SANITIZE_NUMBER_INT);
@@ -64,7 +66,7 @@ class HeventController extends \BaseController {
  
   		return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;New event added.');
 	}
-
+	
 	/**
 	 * Show form for editing an event.
 	 * @return View
@@ -90,6 +92,7 @@ class HeventController extends \BaseController {
 	 */
 	public function postEdit($id)
 	{
+	   	return Redirect::to('/event')->with('flash_message','FAILURE.');
 		# Step 1) Define the rules
 		$rules = Hevent::getRules(); 
 		# Step 2) Validate
@@ -108,39 +111,34 @@ class HeventController extends \BaseController {
 	    catch(exception $e) {
 	        return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Error while updating event.');
 	    }
-	    
-	    #$event_date = filter_var(Input::get('event_date'), FILTER_SANITIZE_STRING);
-	    #$participants = filter_var(Input::get('participants'), FILTER_SANITIZE_NUMBER_INT);
-	    #$units = filter_var(Input::get('units'), FILTER_SANITIZE_NUMBER_INT);
-		#$user = Auth::user();
-	    $serv_type = Service::where('id', '=', $service)->first();
+		$hevent = Hevent::where('id', '=', $id)->first();
+	    $hevent->event_date = Input::get('event_date');
+	    $hevent->participants = Input::get('participants');
+		$hevent->units = Input::get('units');
+		#$hevent->user_id = Auth::user()->id;
+		#$hevent->service_id = Input::get('servName');
+		#$hevent->user()->associate(Auth::user());
+	    $hevent->save();
 
-	    $event = new Hevent();
-		$event->event_date = Hevent::dbDate(filter_var(Input::get('event_date'), FILTER_SANITIZE_STRING));
-	    $event->participants = filter_var(Input::get('participants'), FILTER_SANITIZE_NUMBER_INT);
-		$event->units = filter_var(Input::get('units'), FILTER_SANITIZE_NUMBER_INT);
-		$event->user()->associate(Auth::user());
-		$event->service()->associate($serv_type);
-	    $event->save();
+	   	return Redirect::to('/event')->with('flash_message','&nbsp;&nbsp;Event updated.');
 
-	   	return Redirect::to('/pet')->with('flash_message','&nbsp;&nbsp;Event updated.');
 	}
 
 	/**
 	 * Deelete event.
 	 * @return Redirect
 	 */
-	public function destroy($id)
+	public function postDelete($id)
 	{
 		try {
-			$hevent = Hevent::findOrFail($id);
+			$hevent = Hevent::findOrFail(Input::get('id'));
 		}
 		catch(Exception $e) {
 			return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Event not found');
 		}
 
 		try{
-			Hevent::destroy($id);
+			Hevent::destroy(Input::get('id'));
 		}
 		catch(Exception $e) {
 			return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Error while deleting event.');
