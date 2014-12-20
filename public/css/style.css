@@ -1,4 +1,53 @@
-p, h1, h2, h3, h4, h5, h6 
+img 
+{
+  display:block;
+  margin:auto;
+  width:95%;
+}
+
+.alldiv
+{ 
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: left;
+} 
+
+.wbdr
+{ 
+  border: 3px solid black;
+  min-width: 300px;
+  padding: 10px;
+}
+
+.hdr
+{ 
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.error-message 
+{
+  width:100%;
+  background-color:Lightpink;
+  color:red;
+  text-align:left;
+  padding:5px;
+}
+
+.flash-message 
+{
+  /*position:absolute;
+  top:0;
+  left:0;*/
+  background-color:Lightblue;
+  color:Darkblue;
+  text-align:left;
+  padding:5px;
+}
+
+/*p, h1, h2, h3, h4, h5, h6 
 { margin: 0 0 5px 0;
 
 }
@@ -28,21 +77,6 @@ div
   text-align: left;
 } 
 
-img 
-{
-  display:block;
-  margin:auto;
-  width:95%;
-}
-
-.wbdr
-{ border: 3px solid black;
-}
-
-.hdr
-{ font-weight: bold;
-}
-
 table tr td 
 { border: 1px solid black;
   padding: 10px;
@@ -54,21 +88,4 @@ label,input
   margin-left: 20px;
   margin-top:5px;
 }
-
-.error-message {
-  width:100%;
-  background-color:Lightpink;
-  color:red;
-  text-align:center;
-  padding:5px;
-
-.flash-message {
-  width:100%;
-  /*position:absolute;
-  top:0;
-  left:0;*/
-  background-color:Lightblue;
-  color:Darkblue;
-  text-align:center;
-  padding:5px;
-}
+*/

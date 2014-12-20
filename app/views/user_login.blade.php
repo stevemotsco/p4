@@ -4,19 +4,16 @@
 	Log in - Sunshine Farms
 @stop
 
-@section('content')
+@section('content_banner')
 	<div>
 		<h1>Log in</h1>
 	</div>
+@stop
 
-	@foreach($errors->all() as $message)
-		<h3 class='error-message'>
-		    {{ $message }}
-		</h3>
-	@endforeach
+@section('content')
 
 	{{ Form::open(array('url' => '/login')) }}
-		<div class="wbdr">
+		<div class='wbdr alldiv'>
 		    {{ Form::label('Email:') }}
 		    {{ Form::text('email') }}
 			<br/>

@@ -9,20 +9,23 @@ class HeventController extends \BaseController {
 		$this->beforeFilter('auth');
     } 
 
-	    /**
+	 /**
 	 * Show form with listing of the events for the user.
 	 * @return View
 	 */
 	public function getIndex()
 	{
 		$user = Auth::user();
-		$hevents = $user->hevents;
-
+		#$hevents0 = $user->hevents; #->orderBy('event_date', 'asc');
+		#$hevents1 = Hevent::orderBy('event_date','ascending')->get();
+		$hevents = Hevent::where('user_id', '=', $user->id)
+						->orderBy('event_date','ascending')->get();
 		if($hevents){
 			return View::make('event_index')
 				->with('hevents', $hevents);
+				#->orderBy('event_date');
 		} else {
-			return Redirect::to('/event/add')->with('flash_message', '&nbsp;&nbsp;No events scheduled.  Would you like to add one?');
+			return Redirect::to('/event/add')->with('reg_message', '&nbsp;&nbsp;No events scheduled.  Would you like to add one?');
 		}
 	}
 
@@ -41,9 +44,6 @@ class HeventController extends \BaseController {
 	 */
 	public function postCreate()
 	{
-
-	   	return Redirect::to('/event')->with('flash_message','FAILURE.');
-		
 		# Step 1) Define the rules
 		$rules = Hevent::getRules(); 
 		# Step 2) Validate
@@ -63,8 +63,7 @@ class HeventController extends \BaseController {
 		$hevent->service_id = Input::get('servName');
 		#$hevent->user()->associate(Auth::user());
 	    $hevent->save();
- 
-  		return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;New event added.');
+  		return Redirect::to('/event')->with('reg_message', '&nbsp;&nbsp;New event added.');
 	}
 	
 	/**
@@ -92,46 +91,44 @@ class HeventController extends \BaseController {
 	 */
 	public function postEdit($id)
 	{
-	   	return Redirect::to('/event')->with('flash_message','FAILURE.');
 		# Step 1) Define the rules
 		$rules = Hevent::getRules(); 
 		# Step 2) Validate
 		$validator = Validator::make(Input::all(), $rules);
 		# Step 3) Redirect if validation fails	
 		if($validator->fails()) {
-		    return Redirect::to('/event/'.$id.'/edit')
+		    return Redirect::to('/event/edit/'.$id)
 		        ->with('flash_message', '&nbsp;&nbsp;Event update failed.  Fix error(s) listed above.')
 		        ->withInput()
 		        ->withErrors($validator);
 		}
-
 		try {
-	        $hevent = Hevent::findOrFail(Input::get('id'));
+	        #$hevent = Hevent::findOrFail(Input::get('id'));
+	        $hevent = Hevent::findOrFail($id);
 	    }
 	    catch(exception $e) {
 	        return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Error while updating event.');
 	    }
-		$hevent = Hevent::where('id', '=', $id)->first();
 	    $hevent->event_date = Input::get('event_date');
 	    $hevent->participants = Input::get('participants');
 		$hevent->units = Input::get('units');
 		#$hevent->user_id = Auth::user()->id;
-		#$hevent->service_id = Input::get('servName');
+		$hevent->service_id = Input::get('servName');
 		#$hevent->user()->associate(Auth::user());
 	    $hevent->save();
 
-	   	return Redirect::to('/event')->with('flash_message','&nbsp;&nbsp;Event updated.');
-
+	   	return Redirect::to('/event')->with('reg_message','&nbsp;&nbsp;Event #'.$hevent->id.' updated.');
 	}
 
 	/**
 	 * Deelete event.
 	 * @return Redirect
 	 */
-	public function postDelete($id)
+	public function postDelete()
 	{
 		try {
 			$hevent = Hevent::findOrFail(Input::get('id'));
+			#$hevent = Hevent::findOrFail($id);
 		}
 		catch(Exception $e) {
 			return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Event not found');
@@ -143,8 +140,7 @@ class HeventController extends \BaseController {
 		catch(Exception $e) {
 			return Redirect::to('/event')->with('flash_message', '&nbsp;&nbsp;Error while deleting event.');
 		}
-
-		return Redirect::to('/event')->with('flash_message','&nbsp;&nbsp;Event deleted.');
+		return Redirect::to('/event')->with('reg_message','&nbsp;&nbsp;Event #'.$hevent->id.' deleted.');
 	}
 
 }

@@ -11,7 +11,7 @@
 @section('content')
 	<div>
 	</div>
-	<div class="wbdr">
+	<div class="wbdr alldiv">
 		<table>
 			<tr>
 				<td colspan="2">

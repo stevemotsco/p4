@@ -5,22 +5,13 @@
 	Your Events - Sunshine Farms
 @stop
 
-@section('content')
+@section('content_banner')
 	<div>
 		<h1>Your Events</h1>
 	</div>
+@stop
 
-	@foreach($errors->all() as $message)
-		<h3 class='error-message'>
-		    {{ $message }}
-		</h3>
-	@endforeach
-
-    @if(Session::get('flash_message'))
-		<h4 class='flash-message'>
-			{{ Session::get('flash_message') }}
-     	</h4>
-    @endif
+@section('content')
 
 	@if(sizeof($hevents) == 0)
 		<h4>
@@ -28,12 +19,13 @@
 			Would you like to <a href='<?php echo $baseURL.'/event/add'; ?>'>add an event</a>?<br/><br/>
 		</h4>
 	@else
-		<div><a href='<?php echo $baseURL.'/event/add'; ?>'>Add Event</a></div>
+		<div class="alldiv"><a href='<?php echo $baseURL.'/event/add'; ?>'>Add Event</a></div>
 		@foreach($hevents as $hevent)
-			<div class="wbdr">
-				<?php $id = $hevent->id; ?>
-            	<p>
-	            	{{"Service: ".$hevent['service']['servname'].
+			<div class='wbdr alldiv'>
+				<?php $id = $hevent->id; $dt = new DateTime(); ?>
+				<p>
+	            	{{"Event ID: ".$hevent['id'].
+	            	"<br/>Service: ".$hevent['service']['servname'].
 	            	"<br/>Date: ".$hevent['event_date'].
 	          		"<br/>Participants: ".$hevent['participants'].
 	          		"<br/>Duration: ".$hevent['units']." "}}
@@ -41,9 +33,17 @@
 					@else {{$hevent['service']['unit']."<br/>"}}
 					@endif
             	</p>
-	            <p>
-					<a href='<?php echo $baseURL; ?>/event/{{$id}}/edit'>Edit</a>
-            	</p>
+				<?php
+				$ed = new DateTime($hevent['event_date']);
+				#echo $ed->format("Y-m-d")." eventdate";
+				#echo $dt->format("Y-m-d")." today";
+				if ($ed < $dt) {
+				    #echo '<a href="'.$baseURL.'/event/review/'.$id.'">Write a Review</a>';
+				} else {
+				    echo '<a href="'.$baseURL.'/event/edit/'.$id.'">Edit</a>';
+				}
+				?>
+				<!--<a href='<?php echo $baseURL; ?>/event/edit/{{$id}}'>Edit</a>-->
 			</div>
 		@endforeach
 	@endif 

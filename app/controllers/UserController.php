@@ -44,9 +44,9 @@ class UserController extends BaseController {
 				->withInput()
 				->withErrors($validator);
 		}
-
 		$user = new User;
-		$user->email    = Input::get('email');
+		$user->username = Input::get('email');
+		$user->email = Input::get('email');
 		$user->password = Hash::make(Input::get('password'));
 
 		try {
@@ -59,7 +59,7 @@ class UserController extends BaseController {
 		}
 		# Log in
 		Auth::login($user);
-		return Redirect::to('/')->with('flash_message', '&nbsp;&nbsp;Welcome to Sunshine Farms!');
+		return Redirect::to('/')->with('reg_message', '&nbsp;&nbsp;Welcome to Sunshine Farms!');
 	}
 
 	/**
@@ -78,7 +78,7 @@ class UserController extends BaseController {
 		$credentials = Input::only('email', 'password');
 		# Hashing of password takes place in Auth::attempt 
 		if (Auth::attempt($credentials, $remember = false)) {
-			return Redirect::intended('/')->with('flash_message', '&nbsp;&nbsp;Welcome Back to Sunshine Farms!');
+			return Redirect::intended('/')->with('reg_message', '&nbsp;&nbsp;Welcome Back to Sunshine Farms!');
 		}
 		else {
 			return Redirect::to('/login')

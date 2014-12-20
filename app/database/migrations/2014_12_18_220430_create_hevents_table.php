@@ -34,7 +34,7 @@ class CreateHeventsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('hevents');
+		Schema::dropIfExists('hevents');
 	}
 
 }

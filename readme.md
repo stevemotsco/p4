@@ -13,10 +13,10 @@
 ###### •	Display page to allow users to review details of past events they have participated in (ie - riding lessons, trail rides, etc.)
 ###### •	Display page to allow users to schedule a future event (ie - guided trail ride)
 ###### •	Display page to allow users to cancel/edit a future event already scheduled (ie - guided trail ride)
-###### •	Display page to allow users to write reviews about past services received
-###### •	Display page to allow people (user account not required) to read reviews from past customers
 
 ##### Bonus features:
+###### •	Display page to allow users to write reviews about past services received
+###### •	Display page to allow people (user account not required) to read reviews from past customers
 ###### •	Display page to allow people to download discount coupons
 ###### •	Send out emails to users of special events
 ###### •	Display page to allow users with a recurring event (ie - boarding) to pay bill online
@@ -25,9 +25,6 @@
 
 ##### External Code:
 * https://netdna.bootstrapcdn.com
-* http://getbootstrap.com/
-* https://code.jquery.com
-
 * http://amsul.ca/pickadate.js/index.htm
 * http://maxoffsky.com/code-blog/integrating-date-pickers/
-* http://jqueryui.com/
+* https://code.jquery.com

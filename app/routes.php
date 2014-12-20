@@ -65,9 +65,11 @@ Route::get('/service', 'ServiceController@getIndex');
 Route::get('/event', 'HeventController@getIndex');
 Route::get('/event/add', 'HeventController@getCreate');
 Route::post('/event/add', 'HeventController@postCreate');
-Route::get('/event/{id}/edit', 'HeventController@getEdit');
-Route::post('/event/{id}/edit', 'HeventController@postEdit');
+Route::get('/event/edit/{id}', 'HeventController@getEdit');
+Route::post('/event/edit/{id}', 'HeventController@postEdit');
 Route::post('/event/delete', 'HeventController@postDelete');
+
+#Route::get('/review', 'ServiceController@getIndex');
 
 Route::get('/admin',
     array(
