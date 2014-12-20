@@ -4,8 +4,10 @@
 	Welcome to Sunshine Farms
 @stop
 
-@section('head')
-
+@section('content_banner')
+    <div>
+        <h1>Welcome to Sunshine Farms</h1>
+    </div>
 @stop
 
 @section('content')

@@ -11,7 +11,7 @@
 ###### •	Display page to allow users to login
 ###### •	Display page to allow people (user account not required) to review the various services provided along with associated costs
 ###### •	Display page to allow users to review details of past events they have participated in (ie - riding lessons, trail rides, etc.)
-###### •	Display page to allow users to schedule a future event (ie - guided trail ride)
+###### •	Display page to allow users to add a future event (ie - guided trail ride)
 ###### •	Display page to allow users to cancel/edit a future event already scheduled (ie - guided trail ride)
 
 ##### Bonus features:

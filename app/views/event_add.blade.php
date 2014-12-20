@@ -6,17 +6,6 @@
 @stop
 
 @section('head')
-	<!--<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-	<script src='http://code.jquery.com/jquery-1.10.2.js'></script>
-	<script src='https://code.jquery.com/ui/1.11.2/jquery-ui.js'></script>
-
-	<script src='<?php echo $baseURL.'/js/bootstrap/js/bootstrap.min.js'; ?>'></script>
-	<script src='<?php echo $baseURL.'/js/bootstrap/js/bootstrap-datepicker.js'; ?>'></script>
-
-	<link rel='stylesheet' href='<?php echo $baseURL.'/js/bootstrap/css/bootstrap.min.css'; ?>' > 
-
-	<script src='<?php echo $baseURL.'/js/custom1/jquery-ui.css'; ?>'></script> -->
-
 	<link rel='stylesheet' href='<?php echo $baseURL.'/js/custom2/themes/classic.css'; ?>' >  
 	<link rel='stylesheet' href='<?php echo $baseURL.'/js/custom2/themes/classic.date.css'; ?>' >  
 	<link rel='stylesheet' href='<?php echo $baseURL.'/js/custom2/themes/classic.time.css'; ?>' >  
