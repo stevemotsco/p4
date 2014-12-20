@@ -29,7 +29,7 @@
 	      	<br/>	      	
 	        {{ Form::label( 'event_date', 'Date: ' ) }}  
 			<!--{{ Form::text('event_date', '', array('class' => 'form-control datepicker', 'placeholder' => 'Pick a date', )); }}-->
-	        <input type='text' name='event_date' id='event_date' value='2013/04/20'  /> <!-- placeholder='Select a date'   value=''-->
+	        <input type='text' name='event_date' id='event_date' placeholder='Select a date'  /> <!-- placeholder='Select a date'   value=''-->
 
 	      	<br/>
 			{{ Form::label('participants','Participants: ') }}
@@ -58,7 +58,6 @@
 	    // Enable Pickadate on an input field
 	    $('#event_date').pickadate({
 	    	min: new Date(2000,1,1),
-   			disable: [{ from: [2000,1,1], to: true }],
    			format: 'yyyy-mm-dd',
    			formatSubmit: 'yyyy-mm-dd'
 	    });
