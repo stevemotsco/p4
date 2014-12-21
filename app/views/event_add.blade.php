@@ -58,7 +58,8 @@
 	    // Enable Pickadate on an input field
 	    $('#event_date').pickadate({
 	    	min: new Date(2000,1,1),
-   			format: 'yyyy-mm-dd',
+   	   		disable: [{ from: [2000,1,1], to: true }],
+			format: 'yyyy-mm-dd',
    			formatSubmit: 'yyyy-mm-dd'
 	    });
 	  });   
